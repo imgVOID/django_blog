@@ -12,6 +12,8 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
+
+      <link href="https://fonts.googleapis.com/css?family=Overpass+Mono|Ubuntu+Mono|VT323" rel="stylesheet">
 <link rel='stylesheet' href='//cdn.jsdelivr.net/font-hack/2.020/css/hack.min.css'>
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <link rel="stylesheet" href="css/bootstrap4-neon-glow.min.css">
@@ -23,25 +25,25 @@
 <div class="jumbotron bg-transparent mb-0 radius-0">
   <div class="container">
       <div class="row">
-        <div class="col-xl-12">
-          <h1 class="display-2" align="center"><span class="hal-9000 d-block mx-auto mb-4 mt-3"></span>imgVOID`<span class="vim-caret">s</span></h1>
+        <div class="col-xl-12 col-sm-12">
+          <h1 class="display-2" align="center"><span class="hal-9000 d-block mx-auto mb-4 mt-3"></span>[imgVOID<span class="vim-caret">]</span>`s</h1>
 
             <div align="center">
                 <span class="hal-9000 d-block mx-auto mb-4 mt-3"></span>
 
-                <h2 class="lead mb-3 text-mono text-darkgrey">This is a starter template with a jumbotron</h2>
+                <h2 class="lead mb-3 text-mono text-darkgrey">очень интересный блог про важные темы, мои мнения и мемы.</h2>
                 <div class="row">
-                    <div class="col-xl-4">
-                        <a href="#!" class="btn btn-block btn-lg btn-outline-light navbutton">&lt;&lt;&lt;=previous</a>
+                    <div class="col-xl-4 col-sm-3">
+                        <a href="#!" class="btn btn-shadow text-mono btn-dark navbutton prev">&lt;&lt;&lt;=ТУДА</a>
                     </div>
-                    <div class="col-xl-2">
-                        <a href="#!" class="btn btn-block btn-lg btn-outline-light navbutton">archieve</a>
+                    <div class="col-xl-2 col-sm-3">
+                        <a href="#!" class="btn btn-block btn-lg btn-outline-light navbutton">All</a>
                     </div>
-                    <div class="col-xl-2">
-                        <a href="#!" class="btn btn-block btn-lg btn-outline-light navbutton">tags</a>
+                    <div class="col-xl-2 col-sm-3">
+                        <a href="#!" class="btn btn-block btn-lg btn-outline-light navbutton">Tags</a>
                     </div>
-                    <div class="col-xl-4">
-                        <a href="#!" class="btn btn-block btn-lg btn-outline-light navbutton">next=&gt;&gt;&gt;</a>
+                    <div class="col-xl-4 col-sm-3">
+                        <a href="#!" class="btn btn-shadow text-mono btn-dark navbutton next">СЮДА=&gt;&gt;&gt;</a>
                     </div>
                 </div>
                 <br>
@@ -54,48 +56,48 @@
             <br>
 
             <div class="row">
-                <div class="col-xl-4">
-                	<div class="card text-center">
-                	<div class="card-header text-darkgrey"><a href="#!" class="badge badge-light">tagtag</a></div>
-                	<div class="card-body">
-                    	<h4 class="card-title">Special title treatment</h4>
-                    	<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    	<a href="#!" class="btn btn-shadow text-mono btn-lg btn-outline-danger">read fully</a>
-                	</div>
-                	<div class="card-footer">2 days ago</div>
-            	</div>
-            </div>
 
 
-                <div class="col-xl-4">
+                {% for post in posts %}
+    				<div class="col-xl-4">
                 	<div class="card text-center">
-                	<div class="card-header text-darkgrey"><a href="#!" class="badge badge-light">tagtag</a></div>
+                	<div class="card-header text-darkgrey">{% for tag in post.tag.all %}<a href="#!" class="badge badge-light"> {{ tag }} </a>{% endfor %}</div>
                 	<div class="card-body">
-                    	<h4 class="card-title">Special title treatment</h4>
-                    	<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    	<a href="#!" class="btn btn-shadow text-mono btn-lg btn-outline-danger">read fully</a>
+                    	<h4 class="card-title">{{ post.title }}</h4>
+                    	<p class="card-text">{{ post.text|truncatechars:200|linebreaksbr }}</p>
+                    	<a href="#!" class="btn btn-shadow text-mono btn-lg btn-outline-danger fully">read fully</a>
                 	</div>
-                	<div class="card-footer">2 days ago</div>
+                	<div class="card-footer">{{ post.published_date }}</div>
+            		</div>
             	</div>
-            </div>
+				{% endfor %}
 
-            <div class="col-xl-4">
-                	<div class="card text-center">
-                	<div class="card-header text-darkgrey"><a href="#!" class="badge badge-light">tagtag</a></div>
-                	<div class="card-body">
-                    	<h4 class="card-title">Special title treatment</h4>
-                    	<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    	<a href="#!" class="btn btn-shadow text-mono btn-lg btn-outline-danger">read fully</a>
-                	</div>
-                	<div class="card-footer">2 days ago</div>
-            	</div>
-            </div>
-            </div>
 
 
 
 
  <div class="container py-5 footer">
+<div class="progress pagesbar">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 70%"></div>
+                </div>
+     <br>
+<div class="row">
+                    <div class="col-xl-4 col-sm-3">
+                        <a href="#!" class="btn btn-shadow text-mono btn-dark navbutton prev">&lt;&lt;&lt;=ТУДА</a>
+                    </div>
+                    <div class="col-xl-2 col-sm-3">
+                        <a href="#!" class="btn btn-block btn-lg btn-outline-light navbutton">All</a>
+                    </div>
+                    <div class="col-xl-2 col-sm-3">
+                        <a href="#!" class="btn btn-block btn-lg btn-outline-light navbutton">Tags</a>
+                    </div>
+                    <div class="col-xl-4 col-sm-3">
+                        <a href="#!" class="btn btn-shadow text-mono btn-dark navbutton next">СЮДА=&gt;&gt;&gt;</a>
+                    </div>
+                </div>
+
+
+
           <p class="mt-5 text-grey text-spacey">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, dignissimos provident. Alias, aliquid, cum cumque deleniti dignissimos eos exercitationem explicabo illum inventore laboriosam nihil nobis nostrum praesentium recusandae sequi, sint!
           </p>
