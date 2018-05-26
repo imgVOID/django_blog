@@ -61,40 +61,34 @@
                         {% endif %}
                     </div>
                 </div>
-                <br>
-                <div class="progress pagesbar">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" aria-valuenow="{{ percentnum }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent }}"><b>{{ percent }}</b></div>
-                </div>
 
 
 
 
 
             </div>
+          </div>
             <br>
 
 
-<div style="width: 94%; margin-left: 3%; padding: 2rem; border: dashed #ff3c5c 0.25rem; box-shadow: black 0 0 20px">
-
-    <h1 align="center">
+<div style="width: 100%; padding: 1vw; border: dashed #ff3c5c 0.25rem; box-shadow: black 0 0 20px; margin-top: 1vw">
+    <div style="background-color:#e4e2ff; color: black; width: 100%; padding: 5vw; border-radius: 10px">
+    	<h1 align="center">
         {{ post.title }}
-    </h1>
+    	</h1>
     <hr class="my-4">
     <h6 style="margin-bottom: 1.25rem;">
         {{ post.text|linebreaksbr }}
     </h6>
     <p style="color:#ff3c5c;">{{ post.published_date }}</p>
     <p align="right"><a href="/" class="btn btn-danger">назад</a></p>
+          </div>
 
 
 </div>
 
 
  <div class="container py-5 footer">
-<div class="progress pagesbar">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" aria-valuenow="{{ percentnum }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent }}"><b>{{ percent }}</b></div>
-                </div>
-     <br>
 <div class="row pagination">
                     <div class="col-xl-4 col-sm-3">
                         {% if posts.has_previous %}
