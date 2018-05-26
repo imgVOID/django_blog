@@ -1716,7 +1716,7 @@ pre {
   font-size: 1rem;
   line-height: 1.5;
   color: #adabc6;
-  background-color: #28293e;
+  background-color: #282a38;
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
   border: 1px solid #11111d;
@@ -1736,7 +1736,7 @@ pre {
     border: 0; }
   .form-control:focus {
     color: #adabc6;
-    background-color: #28293e;
+    background-color: #282a38;
     border-color: #c7b8f2;
     outline: 0;
     -webkit-box-shadow: 0 0 0 0.2rem rgba(113, 76, 223, 0.25);
@@ -1765,7 +1765,7 @@ select.form-control:not([size]):not([multiple]) {
 
 select.form-control:focus::-ms-value {
   color: #adabc6;
-  background-color: #28293e; }
+  background-color: #282a38; }
 
 .form-control-file,
 .form-control-range {
@@ -4406,7 +4406,7 @@ input[type="button"].btn-block {
   height: 1rem;
   overflow: hidden;
   font-size: 0.75rem;
-  background-color: #282a38;
+  background-color: #28293e;
   border-radius: 6px; }
 
 .progress-bar {
