@@ -32,7 +32,12 @@
                         <h6 align="center"><span class="hal-9000 d-block mx-auto mb-4 mt-3"></span></h6>
                 </div>
                 <div class="col-xl-4">
+                    {% url 'post_list' as the_url %}
+                    {% if request.path == the_url and number_of_post == 1 %}
                     <h1 class="display-2" align="center">[imgVOID] blog</h1>
+                    {% else %}
+                    <a href="/" style="color:#e4e2ff; text-decoration:underline"><h1 class="display-2" align="center">[imgVOID] blog</h1></a>
+                    {% endif %}
                 </div>
                 <div class="col-xl-1">
                     <h6 align="center"><span class="hal-9000 d-block mx-auto mb-4 mt-3"></span></h6>
@@ -47,16 +52,20 @@
                     <div class="col-xl-4 col-sm-3">
                         {% if posts.has_previous %}
                         <a href="?page={{ posts.previous_page_number }}" class="btn btn-shadow text-mono btn-dark navbutton prev">&lt;&lt;&lt;=СЮДА</a>
+                        {% else %}
+                        <form id="searchform" action="/search" method="get" class="input-group mb-3">
+    <input type="text" name="q" type="text" class="form-control"/>
+                            <div class="input-group-append">
+    <button type="button" onclick="searchform.submit()" type="submit" class="btn btn-outline-light">Поиск</button>
+                            </div>
+</form>
                         {% endif %}
                     </div>
-                    {%  if 'archieve' not in request.path %}
+                    {% if 'archieve' not in request.path %}
                     <div class="col-xl-2 col-sm-3">
                         <a href="archieve" class="btn btn-block btn-lg btn-outline-light navbutton">старьё</a>
                     </div>
-                    {% else %}
-                    <div class="col-xl-2 col-sm-3">
-                        <a href="/" class="btn btn-block btn-lg btn-outline-light navbutton">главная</a>
-                    </div>
+                    
                     {% endif %}
                     <div class="col-xl-2 col-sm-3">
                         <a href="#!" class="btn btn-block btn-lg btn-outline-light navbutton">тэги</a>
