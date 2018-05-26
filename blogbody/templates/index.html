@@ -7,7 +7,7 @@
                 {% for post in posts %}
     				<div class="col-xl-4">
                 	<div class="card text-center">
-                	<div class="card-header text-darkgrey">{% for tag in post.tag.all %}<a href="#!" class="badge badge-light"> {{ tag }} </a>{% endfor %}</div>
+                	<div class="card-header text-darkgrey">{% for tag in post.tag.all %}<a href="{% url 'tag_detail' pk=tag.pk %}" class="badge badge-light"> {{ tag }} </a>{% endfor %}</div>
                 	<div class="card-body">
                         <h4 class="card-title">{{ post.title }}</h4>
                     	<p class="card-text">{{ post.text|truncatechars:200|linebreaksbr }}</p>
