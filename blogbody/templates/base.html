@@ -28,13 +28,13 @@
         <div class="col-xl-12 col-sm-12">
             <div class="row">
                 <div class="col-xl-3"></div>
-                <div class="col-xl-1">
+                <div class="col-xl-1 col-md-1">
                         <h6 align="center"><span class="hal-9000 d-block mx-auto mb-4 mt-3"></span></h6>
                 </div>
                 <div class="col-xl-4">
                     {% url 'post_list' as the_url %}
                     {% if request.path == the_url and number_of_post == 1 %}
-                    <h1 class="display-2" align="center">[imgVOID] blog</h1>
+                    <h3 class="display-2" align="center">[VOID]<span style="font-size:1px;"> </span>blog</h3>
                     {% else %}
                     <a href="{% url 'post_list' %}" style="color:#e4e2ff; text-decoration:underline"><h1 class="display-2" align="center">[imgVOID] blog</h1></a>
                     {% endif %}
