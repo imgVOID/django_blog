@@ -44,6 +44,9 @@
 
             <h2 class="lead mb-3 text-mono text-darkgrey" align="center">очень интересный блог про важные темы, моё мнение и мемы.</h2>
 
+            
+<!-- Navigation's beginning -->
+            
             <div align="center" id="NAV">
                 <div class="row">
                     <div class="col-xl-4 col-sm-3">
@@ -81,7 +84,7 @@
                         {% elif pkprevious > 0 %}
                         <a href="{% url 'post_detail' pk=pkprevious %}"><p class="btn btn-shadow text-mono btn-dark navbutton next">НАЗАД=&gt;&gt;&gt;</p> </a>
                         {% else %}
-                        {% if page.has_previous %}
+                        {% if posts.has_previous %}
                         <form id="searchform" action="{% url 'search' %}" method="get" class="input-group mb-3">
     <input type="text" name="q" type="text" class="form-control"/>
                             <div class="input-group-append">
@@ -106,13 +109,14 @@
           </div>
             <br>
 
+<!-- Navigation's end -->
 
             {% block indexpost %}
             {% endblock %}
 
 
  <div class="footer">
-
+     
      </div>
         
       
