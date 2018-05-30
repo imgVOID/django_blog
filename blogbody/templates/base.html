@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
-  {% load staticfiles %}
+  
   <head>
+    {% load staticfiles %}
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Neon Glow - Bootstrap 4 Theme</title>
+    <title>VOID`s blog</title>
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
 
       <link href="https://fonts.googleapis.com/css?family=Overpass+Mono|Ubuntu+Mono|VT323" rel="stylesheet">
 <link rel='stylesheet' href='//cdn.jsdelivr.net/font-hack/2.020/css/hack.min.css'>
@@ -23,20 +21,19 @@
 
 
 <div class="jumbotron bg-transparent mb-0 radius-0">
-  <div class="container">
       <div class="row">
         <div class="col-xl-12 col-sm-12">
             <div class="row">
                 <div class="col-xl-3"></div>
-                <div class="col-xl-1 col-md-1">
+                <div class="col-xl-1">
                         <h6 align="center"><span class="hal-9000 d-block mx-auto mb-4 mt-3"></span></h6>
                 </div>
                 <div class="col-xl-4">
                     {% url 'post_list' as the_url %}
                     {% if request.path == the_url and number_of_post == 1 %}
-                    <h3 class="display-2" align="center">[VOID]<span style="font-size:1px;"> </span>blog</h3>
+                    <h1 class="display-2" align="center">[VOID]`s blog</h1>
                     {% else %}
-                    <a href="{% url 'post_list' %}" style="color:#e4e2ff; text-decoration:underline"><h1 class="display-2" align="center">[imgVOID] blog</h1></a>
+                    <a href="{% url 'post_list' %}" style="color:#e4e2ff; text-decoration:underline"><h1 class="display-2" align="center">[VOID]`s blog</h1></a>
                     {% endif %}
                 </div>
                 <div class="col-xl-1">
@@ -47,11 +44,13 @@
 
             <h2 class="lead mb-3 text-mono text-darkgrey" align="center">очень интересный блог про важные темы, моё мнение и мемы.</h2>
 
-            <div align="center">
-                <div class="row pagination">
+            <div align="center" id="NAV">
+                <div class="row">
                     <div class="col-xl-4 col-sm-3">
                         {% if posts.has_previous %}
                         <a href="?page={{ posts.previous_page_number }}" class="btn btn-shadow text-mono btn-dark navbutton prev">&lt;&lt;&lt;=СЮДА</a>
+                        {% elif count >= pknext %}
+                        <a href="{% url 'post_detail' pk=pknext %}" class="btn btn-shadow text-mono btn-dark navbutton prev">&lt;&lt;&lt;=ВПЕРЕД</a>
                         {% else %}
                         <form id="searchform" action="{% url 'search' %}" method="get" class="input-group mb-3">
     <input type="text" name="q" type="text" class="form-control"/>
@@ -61,33 +60,50 @@
 </form>
                         {% endif %}
                     </div>
-                    {% if 'archieve' not in request.path %}
                     <div class="col-xl-2 col-sm-3">
+                    {% if 'archieve' not in request.path %}
+                    
                         <a href="{% url 'archieve' %}" class="btn btn-block btn-lg btn-outline-light navbutton">старьё</a>
-                    </div>
+                    
                     
                     {% endif %}
-                    {% if 'tags' not in request.path %}
-                    <div class="col-xl-2 col-sm-3">
-                        <a href="{% url 'tags_list' %}" class="btn btn-block btn-lg btn-outline-light navbutton">тэги</a>
                     </div>
+                    <div class="col-xl-2 col-sm-3">
+                    {% if 'tags' not in request.path %}
+                    
+                        <a href="{% url 'tags_list' %}" class="btn btn-block btn-lg btn-outline-light navbutton">тэги</a>
+                    
                     {% endif %}
+                    </div>
                     <div class="col-xl-4 col-sm-3">
                         {% if posts.has_next %}
                         <a href="?page={{ posts.next_page_number }}"><p class="btn btn-shadow text-mono btn-dark navbutton next">ТУДА=&gt;&gt;&gt;</p> </a>
+                        {% elif pkprevious > 0 %}
+                        <a href="{% url 'post_detail' pk=pkprevious %}"><p class="btn btn-shadow text-mono btn-dark navbutton next">НАЗАД=&gt;&gt;&gt;</p> </a>
+                        {% else %}
+                        {% if page.has_previous %}
+                        <form id="searchform" action="{% url 'search' %}" method="get" class="input-group mb-3">
+    <input type="text" name="q" type="text" class="form-control"/>
+                            <div class="input-group-append">
+    <button type="button" onclick="searchform.submit()" type="submit" class="btn btn-outline-light">Поиск</button>
+                            </div>
+</form>
+                        {% endif %}
                         {% endif %}
                     </div>
                 </div>
+                {% if 'post' not in request.path %}
                 <br>
+                
+                
                 <div class="progress pagesbar">
                     <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" aria-valuenow="{{ percentnum }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent }}"><b>{{ percent }}</b></div>
                 </div>
-
-
-
-
-
+                {% endif %}
             </div>
+            
+            </div>
+          </div>
             <br>
 
 
@@ -95,40 +111,12 @@
             {% endblock %}
 
 
- <div class="container py-5 footer">
-<div class="progress pagesbar">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" aria-valuenow="{{ percentnum }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent }}"><b>{{ percent }}</b></div>
-                </div>
-     <br>
-<div class="row pagination">
-                    <div class="col-xl-4 col-sm-3">
-                        {% if posts.has_previous %}
-                        <a href="?page={{ posts.previous_page_number }}" class="btn btn-shadow text-mono btn-dark navbutton prev">&lt;&lt;&lt;=СЮДА</a>
-                        {% endif %}
-                    </div>
-                    <div class="col-xl-2 col-sm-3">
-                        <a href="#!" class="btn btn-block btn-lg btn-outline-light navbutton">всё</a>
-                    </div>
-                    <div class="col-xl-2 col-sm-3">
-                        <a href="#!" class="btn btn-block btn-lg btn-outline-light navbutton">тэги</a>
-                    </div>
-                    <div class="col-xl-4 col-sm-3">
-                        {% if posts.has_next %}
-                        <a href="?page={{ posts.next_page_number }}"><p class="btn btn-shadow text-mono btn-dark navbutton next">ТУДА=&gt;&gt;&gt;</p> </a>
-                        {% endif %}
-                    </div>
-                </div>
+ <div class="footer">
 
-
-
-          <p class="mt-5 text-grey text-spacey">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, dignissimos provident. Alias, aliquid, cum cumque deleniti dignissimos eos exercitationem explicabo illum inventore laboriosam nihil nobis nostrum praesentium recusandae sequi, sint!
-          </p>
      </div>
-        </div>
-      </div>
+        
+      
   </div>
-</div>
 
 
     <!-- Optional JavaScript -->
