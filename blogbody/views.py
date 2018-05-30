@@ -4,7 +4,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Post
 from .models import Tag
 import re
-from django.db.models import Q
+from django.db.models import Q, Count
+
 
 # Create your views here.
 def post_list(request):
@@ -74,11 +75,15 @@ def search(request):
         entry_query = get_query(query_string, ['title', 'text',])
 
         found_entries = Post.objects.filter(entry_query).order_by('-published_date')
-
-    return render(request, 'search.html', { 'query_string': query_string, 'found_entries': found_entries })
+    count = found_entries.all().count()
+    return render(request, 'search.html', { 'query_string': query_string, 'found_entries': found_entries, 'count': count })
 
 def tag_detail(request, pk):
     tag = get_object_or_404(Tag, pk=pk)
-    count = Tag.objects.all().count()
-    posts = Post.objects.all().filter(tag=tag)
-    return render(request, 'tag_detail.html', {'tag':tag, 'count':count, 'posts':posts})
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date').filter(tag=tag)
+    return render(request, 'tag_detail.html', {'tag':tag, 'posts':posts})
+
+def tags_list(request):
+    tags = Tag.objects.annotate(num_posts=Count('post'))
+    count = tags.count()
+    return render(request, 'tags_list.html', {'tags': tags, 'count': count })

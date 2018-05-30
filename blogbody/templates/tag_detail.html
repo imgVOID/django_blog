@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 {% block indexpost %}
-<div style="width: 94%; margin-left: 3%; padding: 2rem; border: dashed #ff3c5c 0.25rem; box-shadow: black 0 0 20px">
-    {{ tag.title }}
-        {{ count }}
-    {% for post in posts %}
-    	<a href="{% url 'post_detail' pk=post.pk %}" style="color:white"><span>{{ post.title }}</span> <span style="color:#ff3c5c;">от {{ post.published_date }}</span></a>
-    {% endfor %}
-</div>
 
+<div style="width: 94%; margin-left: 3%; padding: 2rem; border: dashed #ff3c5c 0.25rem; box-shadow: black 0 0 20px">
+    <p align="center" style="color:#ff3c5c;">тэг: "{{ tag.title }}"</p>
+    {% for post in posts %}
+    <div align="center">
+        <a href="{% url 'post_detail' pk=post.pk %}" style="color:white"><span>{{ post.title }}</span> <span style="color:#ff3c5c;">от {{ post.published_date }}</span></a>
+    <hr class="my-2">
+    </div>
+
+	{% endfor %}
+
+
+</div>
 {% endblock %}

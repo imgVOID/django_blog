@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block indexpost %}
+
+<div style="width: 94%; margin-left: 3%; padding: 2rem; border: dashed #ff3c5c 0.25rem; box-shadow: black 0 0 20px">
+    <p align="center" style="color:#ff3c5c;">всего тэгов: "{{ count }}"</p>
+    <div class="row">
+        {% for tag in tags %}
+        <div class="col-xl-4 col-xs-4 col-md-4">
+            <div align="center">
+                <a href="{% url 'tag_detail' pk=tag.pk %}" style="color:white"><span>{{ tag.title }}</span><span style="color:#ff3c5c">: {{ tag.num_posts }}</span></a>
+            </div>
+        
+        </div>
+    
+    
+
+	{% endfor %}
+</div>
+
+</div>
+{% endblock %}
