@@ -10,7 +10,7 @@ from django.db.models import Q, Count
 # Create your views here.
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date').reverse()
-    paginator = Paginator(posts, 3)
+    paginator = Paginator(posts, 6)
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)
@@ -50,7 +50,7 @@ def normalize_query(query_string,
     return [normspace(' ', (t[0] or t[1]).strip()) for t in findterms(query_string)]
 
 def get_query(query_string, search_fields):
-    query = None 
+    query = None
     terms = normalize_query(query_string)
     for term in terms:
         or_query = None

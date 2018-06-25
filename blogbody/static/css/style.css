@@ -255,9 +255,9 @@ hr {
             box-shadow: 0 0 0 0.2rem rgba(113, 76, 223, 0.25); }
   .btn:not(:disabled):not(.disabled) {
     cursor: pointer; }
-  
-    
- 
+
+
+
 
 .btn-dark {
   color: #dbebfb;
@@ -283,9 +283,9 @@ hr {
   .btn-outline-danger:focus {
     -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 60, 92, 0.5);
             box-shadow: 0 0 0 0.2rem rgba(255, 60, 92, 0.5); }
-  
-  
-    
+
+
+
 
 .btn-outline-light {
   color: #dbebfb;
@@ -299,8 +299,8 @@ hr {
   .btn-outline-light:focus {
     -webkit-box-shadow: 0 0 0 0.2rem rgba(219, 235, 251, 0.5);
             box-shadow: 0 0 0 0.2rem rgba(219, 235, 251, 0.5); }
-  
-  
+
+
     .btn-outline-light:not(:disabled):not(.disabled):active:focus, .btn-outline-light:not(:disabled):not(.disabled).active:focus {
       -webkit-box-shadow: 0 0 0 0.2rem rgba(219, 235, 251, 0.5);
               box-shadow: 0 0 0 0.2rem rgba(219, 235, 251, 0.5); }
@@ -439,7 +439,7 @@ hr {
 
 .jumbotron {
   padding: 2rem 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: -5rem;
   background-color: #282a38;
   border-radius: 6px; }
   @media (min-width: 576px) {
@@ -585,7 +585,8 @@ hr {
 
 @media (max-width: 767.98px) {
   .display-2 {
-    font-size: 3.5rem; } }
+    font-size: 3.5rem; }
+  }
 
 body {
   background-image: url("../images/ng-background-dot.png"); }
@@ -609,7 +610,7 @@ body {
       -webkit-transition: all .3s ease;
       -o-transition: all .3s ease;
       transition: all .3s ease; }
-    
+
   .btn-shadow.btn-dark {
     color: #dbebfb;
     width: 100%;
@@ -629,7 +630,7 @@ body {
       -webkit-transition: all .3s ease;
       -o-transition: all .3s ease;
       transition: all .3s ease; }
-    
+
   .btn-shadow.btn-outline-danger:hover {
     background-color: #ff2347; }
   .btn-shadow.btn-dark:hover {
@@ -640,7 +641,7 @@ body {
 .display-2 {}
 
 .text-darkgrey {
-  color: #282a38;
+  color: black;
   text-shadow: 0px 0px 2px #ff3c5c;}
 
 .text-mono {
@@ -669,3 +670,39 @@ body {
 
 .pagesbar {
     margin-top: -10px; }
+
+.footer {
+    margin-bottom: -5vh;
+    padding-bottom: -5vh;
+    padding-top: -2rem;
+    width:96.5vw;
+}
+
+.copywright {
+    margin-top: 0rem;
+    width: 94%;
+    padding-left: 1.2%;
+
+}
+.upthepage {
+    margin-top: -1.45rem;
+    width: 50%;
+    padding-right: 5px;
+
+}
+.white-text {
+    color: whitesmoke !important;
+}
+@media screen and (orientation:portrait){
+    .copywrite {
+        text-align: center;
+        border: 1px white solid;
+    }
+}
+@media only screen and (max-width: 800px){
+    .copywright {
+        text-align: center;
+        width: 80%;
+        padding-left: 15%;
+    }
+}

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
-  
+
   <head>
     {% load staticfiles %}
 
@@ -44,9 +44,9 @@
 
             <h2 class="lead mb-3 text-mono text-darkgrey" align="center">очень интересный блог про важные темы, программирование и мемы.</h2>
 
-            
+
 <!-- Navigation's beginning -->
-            
+
             <div align="center" id="NAV">
                 <div class="row">
                     <div class="col-xl-4 col-sm-3">
@@ -65,17 +65,17 @@
                     </div>
                     <div class="col-xl-2 col-sm-3">
                     {% if 'archieve' not in request.path %}
-                    
+
                         <a href="{% url 'archieve' %}" class="btn btn-block btn-lg btn-outline-light navbutton">старьё</a>
-                    
-                    
+
+
                     {% endif %}
                     </div>
                     <div class="col-xl-2 col-sm-3">
                     {% if 'tags' not in request.path %}
-                    
+
                         <a href="{% url 'tags_list' %}" class="btn btn-block btn-lg btn-outline-light navbutton">тэги</a>
-                    
+
                     {% endif %}
                     </div>
                     <div class="col-xl-4 col-sm-3">
@@ -97,14 +97,14 @@
                 </div>
                 {% if 'post' not in request.path %}
                 <br>
-                
-                
+
+
                 <div class="progress pagesbar">
                     <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" aria-valuenow="{{ percentnum }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent }}"><b>{{ percent }}</b></div>
                 </div>
                 {% endif %}
             </div>
-            
+
             </div>
           </div>
             <br>
@@ -115,12 +115,15 @@
             {% endblock %}
 
 
- <div class="footer">
-     
-     </div>
-        
-      
-  </div>
+<div class="footer">
+                <div class="copywright">
+                    <h3 class="white-text" style="display: inline;"><a href="#" class="btn btn-outline-light">Пойти наверх</a></h3>
+                        <h3 class="text-darkgrey" style="display: inline;">&copy; imgVOID, 2018</h3>
+                </div>
+    </div>
+          </div>
+
+<!-- Navigation's end -->
 
 
     <!-- Optional JavaScript -->
