@@ -675,21 +675,15 @@ body {
     margin-bottom: -5vh;
     padding-bottom: -5vh;
     padding-top: -2rem;
-    width:96.5vw;
+    width:100%;
 }
 
 .copywright {
     margin-top: 0rem;
-    width: 94%;
-    padding-left: 1.2%;
+    text-align: center;
 
 }
-.upthepage {
-    margin-top: -1.45rem;
-    width: 50%;
-    padding-right: 5px;
 
-}
 .white-text {
     color: whitesmoke !important;
 }
